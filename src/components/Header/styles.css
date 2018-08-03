@@ -1,8 +1,11 @@
 header {
-    font-size: 2.4rem;
+    font-size: 1.6rem;
     font-family: 'Pacifico';
     text-align: center;
     padding: 10px 20px;
     color: #424242;
-    border-bottom: 1px solid #eeeeee;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    background: #fff;
 }

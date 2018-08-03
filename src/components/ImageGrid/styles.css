@@ -1,0 +1,35 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 25px;
+    grid-gap: 25px;
+    grid-auto-flow: dense;
+    align-items: stretch;
+}
+
+img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.item-1 {
+    grid-row: span 1;
+}
+
+.item-2 {
+    grid-row: span 2;
+}
+
+.item-3 {
+    grid-row: span 3;
+}
+
+.item-4 {
+    grid-row: span 4;
+}
+
+.item-5 {
+    grid-row: span 5;
+}
