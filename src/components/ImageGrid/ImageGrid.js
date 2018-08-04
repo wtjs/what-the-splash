@@ -5,22 +5,13 @@ import Button from '../Button';
 import { loadImages } from '../../actions';
 import './styles.css';
 
-const key = '5f96323678d05ff0c4eb264ef184556868e303b32a2db88ecbf15746e6f25e02';
-
 class ImageGrid extends Component {
     componentDidMount() {
         this.props.loadImages();
-        // fetch(`https://api.unsplash.com/photos/?client_id=${key}&per_page=3`)
-        //     .then(res => res.json())
-        //     .then(images => {
-        //         this.setState({
-        //             images,
-        //         });
-        //     });
     }
 
     render() {
-        const { isLoading, images } = this.props;
+        const { isLoading, images, loadImages } = this.props;
         return (
             <div className="content">
                 <section className="grid">
@@ -35,7 +26,9 @@ class ImageGrid extends Component {
                         />
                     ))}
                 </section>
-                <Button loading={isLoading}>Load More</Button>
+                <Button onClick={loadImages} loading={isLoading}>
+                    Load More
+                </Button>
             </div>
         );
     }

@@ -1,3 +1,3 @@
-export default function* helloSaga() {
-    console.log('Ayyyyyyyyyyyyyyyy');
-}
+import imagesSaga from './imagesSaga';
+
+export default imagesSaga;

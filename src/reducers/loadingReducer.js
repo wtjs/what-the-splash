@@ -4,9 +4,9 @@ const loadingReducer = (state = false, action) => {
     switch (action.type) {
         case IMAGES.LOAD:
             return true;
-        case IMAGES.SUCCESS:
+        case IMAGES.LOAD_SUCCESS:
             return false;
-        case IMAGES.FAIL:
+        case IMAGES.LOAD_FAIL:
             return false;
 
         default:
