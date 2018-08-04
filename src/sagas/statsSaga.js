@@ -5,13 +5,19 @@ import { fetchImageStats } from '../api';
 import { loadImageStats, setImageStats, setImageStatsError } from '../actions';
 
 function* handleStatsRequest(id) {
-    try {
-        yield put(loadImageStats(id));
-        const res = yield call(fetchImageStats, id);
-        yield put(setImageStats(id, res.downloads.total));
-    } catch (e) {
-        yield put(setImageStatsError(id));
+    for (let i = 0; i < 3; i++) {
+        try {
+            yield put(loadImageStats(id));
+            const res = yield call(fetchImageStats, id);
+            yield put(setImageStats(id, res.downloads.total));
+            // image was loaded so we exit the generator
+            return true;
+        } catch (e) {
+            // we just need to retry and dispactch an error
+            // if we tried more than 3 times
+        }
     }
+    yield put(setImageStatsError(id));
 }
 
 export default function* watchStatsRequest() {
