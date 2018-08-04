@@ -8,6 +8,7 @@ const loadingReducer = (state = false, action) => {
             return false;
         case IMAGES.FAIL:
             return false;
+
         default:
             return state;
     }
