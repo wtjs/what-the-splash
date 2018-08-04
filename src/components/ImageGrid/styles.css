@@ -1,12 +1,19 @@
+.content {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    max-width: 1200px;
-    margin: 20px auto;
     padding: 25px;
     grid-gap: 25px;
     grid-auto-flow: dense;
     align-items: stretch;
+    width: 100%;
 }
 
 img {
