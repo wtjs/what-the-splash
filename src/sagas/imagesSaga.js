@@ -7,7 +7,7 @@ const getPage = state => state.nextPage;
 
 function* handleImagesLoad() {
     try {
-        const page = select(getPage);
+        const page = yield select(getPage);
         const images = yield call(fetchImages, page);
         yield put({ type: IMAGES.LOAD_SUCCESS, images });
     } catch (error) {
