@@ -11,7 +11,7 @@ class ImageGrid extends Component {
     }
 
     render() {
-        const { isLoading, images, loadImages } = this.props;
+        const { isLoading, images, loadImages, error } = this.props;
         return (
             <div className="content">
                 <section className="grid">
@@ -26,7 +26,11 @@ class ImageGrid extends Component {
                         />
                     ))}
                 </section>
-                <Button onClick={loadImages} loading={isLoading}>
+                {error && <div className="error">{JSON.stringify(error)}</div>}
+                <Button
+                    onClick={() => !isLoading && loadImages()}
+                    loading={isLoading}
+                >
                     Load More
                 </Button>
             </div>
@@ -34,9 +38,10 @@ class ImageGrid extends Component {
     }
 }
 
-const mapStateToProps = ({ isLoading, images }) => ({
+const mapStateToProps = ({ isLoading, images, error }) => ({
     isLoading,
     images,
+    error,
 });
 
 const mapDispatchToProps = dispatch => ({
