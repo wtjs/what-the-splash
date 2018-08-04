@@ -1,5 +1,6 @@
 import { put, call, takeEvery, select } from 'redux-saga/effects';
 
+import { loadImagesSuccess, loadImagesFail } from '../actions';
 import { IMAGES } from '../constants';
 import fetchImages from '../api';
 
@@ -9,9 +10,9 @@ function* handleImagesLoad() {
     try {
         const page = yield select(getPage);
         const images = yield call(fetchImages, page);
-        yield put({ type: IMAGES.LOAD_SUCCESS, images });
+        yield put(loadImagesSuccess(images));
     } catch (error) {
-        yield put({ type: IMAGES.LOAD_FAIL, error: error.toString() });
+        yield put(loadImagesFail(error.toString()));
     }
 }
 
