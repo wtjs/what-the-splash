@@ -22,18 +22,23 @@ class ImageGrid extends Component {
     render() {
         const { images } = this.state;
         return (
-            <section className="grid">
-                {images.map(image => (
-                    <img
-                        key={image.id}
-                        src={image.urls.small}
-                        alt={image.user.username}
-                        className={`item-${Math.ceil(
-                            image.height / image.width,
-                        )}`}
-                    />
-                ))}
-            </section>
+            <div className="content">
+                <section className="grid">
+                    {images.map(image => (
+                        <div
+                            key={image.id}
+                            className={`item item-${Math.ceil(
+                                image.height / image.width,
+                            )}`}
+                        >
+                            <img
+                                src={image.urls.small}
+                                alt={image.user.username}
+                            />
+                        </div>
+                    ))}
+                </section>
+            </div>
         );
     }
 }
