@@ -1,4 +1,3 @@
-import { takeEvery, select } from 'redux-saga/effects';
 import { runSaga } from 'redux-saga';
 
 import { getPage, handleImagesLoad } from '../imagesSaga';
