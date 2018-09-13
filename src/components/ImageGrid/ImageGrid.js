@@ -1,5 +1,6 @@
 import React, { Component, unstable_Profiler as Profiler } from 'react';
 import { connect } from 'react-redux';
+import { unstable_track as track } from 'schedule/tracking';
 
 import Button from '../Button';
 import Stats from '../Stats';
@@ -14,6 +15,7 @@ class ImageGrid extends Component {
         baseTime,
         startTime,
         commitTime,
+        interactions,
     ) => {
         console.log({
             profilerId,
@@ -22,7 +24,15 @@ class ImageGrid extends Component {
             baseTime, // time taken by react
             startTime, // timestamp at which render started
             commitTime, // timestamp at which render was committed to the renderer
+            interactions, // from tracking
         });
+    };
+
+    handleLoadImages = () => {
+        const { isLoading, loadImages } = this.props;
+        if (!isLoading) {
+            track('Load Images', performance.now(), loadImages);
+        }
     };
 
     render() {
@@ -49,10 +59,7 @@ class ImageGrid extends Component {
                     {error && (
                         <div className="error">{JSON.stringify(error)}</div>
                     )}
-                    <Button
-                        onClick={() => !isLoading && loadImages()}
-                        loading={isLoading}
-                    >
+                    <Button onClick={this.handleLoadImages} loading={isLoading}>
                         Load More
                     </Button>
                 </div>
