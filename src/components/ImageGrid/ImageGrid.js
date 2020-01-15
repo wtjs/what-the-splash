@@ -54,7 +54,4 @@ const mapDispatchToProps = dispatch => ({
     loadImages: () => dispatch(loadImages()),
 });
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(ImageGrid);
+export default connect(mapStateToProps, mapDispatchToProps)(ImageGrid);
