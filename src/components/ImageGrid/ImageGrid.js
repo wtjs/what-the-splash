@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Button from '../Button';
 import Stats from '../Stats';
-import { loadImages } from '../../features/images/imagesSlice';
+import { loadImages } from '../../features/imagesSlice';
 import './styles.css';
 
 class ImageGrid extends Component {

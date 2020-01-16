@@ -5,9 +5,9 @@ import {
     loadImageStats,
     setImageStats,
     setImageStatsError,
-} from '../features/images/statsSlice';
+} from '../features/statsSlice';
 
-import { setImages } from '../features/images/imagesSlice';
+import { setImages } from '../features/imagesSlice';
 
 export function* handleStatsRequest(id) {
     for (let i = 0; i < 3; i++) {

@@ -1,6 +1,6 @@
 import { put, call, takeEvery, select, all } from 'redux-saga/effects';
 
-import { setImages, loadImages } from '../features/images/imagesSlice';
+import { setImages, loadImages } from '../features/imagesSlice';
 import { fetchImages } from '../api';
 import { setError } from '../features/errorSlice';
 import { goNext } from '../features/pageSlice';
