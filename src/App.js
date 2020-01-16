@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import Header from './components/Header';
 import ImageGrid from './components/ImageGrid';
 
-import store from './store';
+import store from './redux/store';
 
 class App extends Component {
     render() {

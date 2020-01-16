@@ -4,11 +4,12 @@ const imagesSlice = createSlice({
     name: 'images',
     initialState: [],
     reducers: {
-        setImages: (state, action) => {
-            state.push(...action.payload);
+        loadImages: () => {},
+        setImages: (state, { payload: images }) => {
+            state.push(...images);
         },
     },
 });
 
-export const { setImages } = imagesSlice.actions;
+export const { loadImages, setImages } = imagesSlice.actions;
 export default imagesSlice.reducer;

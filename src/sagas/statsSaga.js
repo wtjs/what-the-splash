@@ -1,12 +1,13 @@
 import { take, call, fork, put } from 'redux-saga/effects';
 
-import { IMAGES } from '../constants';
 import { fetchImageStats } from '../api';
 import {
     loadImageStats,
     setImageStats,
     setImageStatsError,
 } from '../features/images/statsSlice';
+
+import { setImages } from '../features/images/imagesSlice';
 
 export function* handleStatsRequest(id) {
     for (let i = 0; i < 3; i++) {
@@ -27,7 +28,7 @@ export function* handleStatsRequest(id) {
 export default function* watchStatsRequest() {
     while (true) {
         // we get the action here
-        const { payload: images } = yield take(IMAGES.LOAD_SUCCESS);
+        const { payload: images } = yield take(setImages);
 
         for (const { id } of images) {
             yield fork(handleStatsRequest, id);

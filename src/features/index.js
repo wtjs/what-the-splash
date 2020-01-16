@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import loadingReducer from './loadingReducer';
-import imagesReducer from '../features/images/imagesSlice';
-import errorReducer from './errorReducer';
-import pageReducer from './pageReducer';
-import statsReducer from '../features/images/statsSlice';
+import loadingReducer from './loadingSlice';
+import errorReducer from './errorSlice';
+import pageReducer from './pageSlice';
+import imagesReducer from './images/imagesSlice';
+import statsReducer from './images/statsSlice';
 
 const rootReducer = combineReducers({
     isLoading: loadingReducer,
