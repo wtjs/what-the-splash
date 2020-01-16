@@ -3,10 +3,7 @@ import { put, call, takeEvery, select, all } from 'redux-saga/effects';
 import { fetchImages } from '../api';
 import { setImages, loadImages } from '../features/imagesSlice';
 import { setError } from '../features/errorSlice';
-import { incrementPage } from '../features/pageSlice';
 import { setLoading } from '../features/loadingSlice';
-
-export const getPage = state => state.nextPage;
 
 function putAll(actions) {
     return all(actions.map(action => put(action)));
@@ -15,10 +12,10 @@ function putAll(actions) {
 export function* handleImagesLoad() {
     try {
         yield put(setLoading(true));
-        const page = yield select(getPage);
+        const page = yield select(state => state.nextPage);
         const images = yield call(fetchImages, page);
 
-        yield putAll([setError(null), setImages(images), incrementPage()]);
+        yield putAll([setError(null), setImages(images)]);
     } catch (error) {
         yield put(setError(error.toString()));
     } finally {
@@ -26,6 +23,6 @@ export function* handleImagesLoad() {
     }
 }
 
-export default function* watchImagesLoad() {
+export default function*() {
     yield takeEvery(loadImages, handleImagesLoad);
 }

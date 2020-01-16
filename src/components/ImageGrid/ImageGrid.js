@@ -4,10 +4,18 @@ import { connect } from 'react-redux';
 import Button from '../Button';
 import Stats from '../Stats';
 import { loadImages } from '../../features/imagesSlice';
+import { incrementPage } from '../../features/pageSlice';
 import './styles.css';
 
 const ImageGrid = props => {
-    const { isLoading, images, loadImages, error, imageStats } = props;
+    const {
+        isLoading,
+        images,
+        loadImages,
+        incrementPage,
+        error,
+        imageStats,
+    } = props;
 
     useEffect(() => {
         loadImages();
@@ -30,7 +38,7 @@ const ImageGrid = props => {
             </section>
             {error && <div className="error">{JSON.stringify(error)}</div>}
             <Button
-                onClick={() => !isLoading && loadImages()}
+                onClick={() => !isLoading && incrementPage()}
                 loading={isLoading}
             >
                 Load More
@@ -47,6 +55,7 @@ const mapStateToProps = ({ isLoading, images, error, imageStats }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    incrementPage: () => dispatch(incrementPage()),
     loadImages: () => dispatch(loadImages()),
 });
 
