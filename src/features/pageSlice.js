@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const nextPageSlice = createSlice({
-    name: 'nextPage',
-    initialState: 1,
+const pageSlice = createSlice({
+    name: 'page',
+    initialState: { current: 1 },
     reducers: {
         incrementPage: state => {
-            return state + 1;
+            ++state.current;
         },
     },
 });
 
-export const { incrementPage } = nextPageSlice.actions;
+export const { incrementPage } = pageSlice.actions;
 
-export default nextPageSlice.reducer;
+export default pageSlice.reducer;

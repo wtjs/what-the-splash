@@ -12,7 +12,7 @@ function putAll(actions) {
 export function* handleImagesLoad() {
     try {
         yield put(setLoading(true));
-        const page = yield select(state => state.nextPage);
+        const page = yield select(state => state.page.current);
         const images = yield call(fetchImages, page);
 
         yield putAll([setError(null), setImages(images)]);

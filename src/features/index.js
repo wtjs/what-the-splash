@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
     isLoading: loadingReducer,
     images: imagesReducer,
     error: errorReducer,
-    nextPage: pageReducer,
+    page: pageReducer,
     imageStats: statsReducer,
 });
 
